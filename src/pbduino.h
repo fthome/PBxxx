@@ -72,13 +72,21 @@ class Pbduino_lcd : public Pbduino{
   Pbduino_lcd();
   ~Pbduino_lcd();
   void init();
-  LiquidCrystal_I2C lcd();
   void affiche(String txt);
   void affiche(String txt, int row);
   void affiche(String txt, int row, int col);
+  void affiche(int val);
+  void affiche(int val, int row);
+  void affiche(int val, int row, int col);
+  void affiche(float val);
+  void affiche(float val, int row);
+  void affiche(float val, int row, int col);
+  LiquidCrystal_I2C *lcd; //public pour accés par pbxx.lcd->
+  void allumeEcran();
+  void eteintEcran();
+  void effaceEcran();
 
   protected :
-  LiquidCrystal_I2C *_lcd;
   uint8_t _lcd_cols;
   uint8_t _lcd_rows;
 };

@@ -1,0 +1,54 @@
+#######################################
+# Syntax Coloring Map For Pbduino
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Pb100	KEYWORD1
+Pb200 KEYWORD1
+Pb300	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+set_led_verte	KEYWORD2
+allume_led_verte	KEYWORD2
+eteint_led_verte	KEYWORD2
+set_led_rouge	KEYWORD2
+allume_led_rouge	KEYWORD2
+eteint_led_rouge	KEYWORD2
+set_led_jaune	KEYWORD2
+allume_led_jaune	KEYWORD2
+eteint_led_jaune	KEYWORD2
+set_led_bleu	KEYWORD2
+allume_led_bleu	KEYWORD2
+eteint_led_bleu	KEYWORD2
+buzzer	KEYWORD2
+buzzer	KEYWORD2
+buzzer	KEYWORD2
+noBuzzer	KEYWORD2
+init	KEYWORD2
+affiche	KEYWORD2
+lcd	KEYWORD2
+void	KEYWORD2
+void	KEYWORD2
+void	KEYWORD2
+distance	KEYWORD2
+get_bouton_vert	KEYWORD2
+get_bouton_rouge	KEYWORD2
+get_bouton_bleu	KEYWORD2
+get_bouton_jaune	KEYWORD2
+get_bouton	KEYWORD2
+get_photo1()	KEYWORD2
+get_photo2()	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################

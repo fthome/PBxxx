@@ -103,19 +103,19 @@ void LiquidCrystal_I2C::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
 	// figure 24, pg 46
 
 	  // we start in 8bit mode, try to set 4 bit mode
-   write4bits(0x03 << 4);
+   write4bits(0x03);
    delayMicroseconds(4500); // wait min 4.1ms
 
    // second try
-   write4bits(0x03 << 4);
+   write4bits(0x03);
    delayMicroseconds(4500); // wait min 4.1ms
 
    // third go!
-   write4bits(0x03 << 4);
+   write4bits(0x03);
    delayMicroseconds(150);
 
    // finally, set to 4-bit interface
-   write4bits(0x02 << 4);
+   write4bits(0x02);
 
 
 	// set # lines, font size, etc.
@@ -232,15 +232,17 @@ void LiquidCrystal_I2C::createChar(uint8_t location, uint8_t charmap[]) {
 // Turn the (optional) backlight off/on
 void LiquidCrystal_I2C::noBacklight(void) {
 	_backlightval=LCD_NOBACKLIGHT;
+	//Serial.print("Set noBacklight");
+	//Serial.println(_backlightval);
 	expanderWrite(0);
 }
 
 void LiquidCrystal_I2C::backlight(void) {
 	_backlightval=LCD_BACKLIGHT;
+	//Serial.print("Set Backlight");
+	//Serial.println(_backlightval);
 	expanderWrite(0);
 }
-
-
 
 /*********** mid level commands, for sending data/cmds */
 
@@ -255,7 +257,7 @@ inline void LiquidCrystal_I2C::command(uint8_t value) {
 void LiquidCrystal_I2C::send(uint8_t value, uint8_t mode) {
 	uint8_t highnib=(value&0xf0)>>4;
 	uint8_t lownib=value&0x0f;
-       write4bits((highnib)|mode);
+  write4bits((highnib)|mode);
 	write4bits((lownib)|mode);
 }
 
@@ -265,6 +267,9 @@ void LiquidCrystal_I2C::write4bits(uint8_t value) {
 }
 
 void LiquidCrystal_I2C::expanderWrite(uint8_t _data){
+	//Serial.print(_backlightval);
+	//Serial.print("--->");
+	//Serial.println(String((int)(_data) | _backlightval,BIN));
 	Wire.beginTransmission(_Addr);
 	printIIC((int)(_data) | _backlightval);
 	Wire.endTransmission();

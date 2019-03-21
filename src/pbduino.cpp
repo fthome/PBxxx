@@ -47,15 +47,6 @@ void Pbduino::init(){
   }
 }
 
-/*
-void Pbduino::init_lcd(uint8_t addr, uint8_t cols, uint8_t rows){
-  _lcd = new LiquidCrystal_I2C(addr, cols, rows);
-  _lcd->init()
-  _lcd->backlight();
-  _lcd->print("PIERRON");
-  delay(1000);
-}
-*/
 
 /////////////////
 // LES LEDS    //
@@ -65,72 +56,96 @@ void Pbduino::init_lcd(uint8_t addr, uint8_t cols, uint8_t rows){
 void Pbduino::set_led_verte(uint8_t state) const{
   if (_pin_led_verte >0){
     digitalWrite(_pin_led_verte, state);
+  }else{
+    Serial.print("Erreur : _pin_led_verte non assignée.");
   }
 }
 // Allume la led verte
 void Pbduino::allume_led_verte() const{
   if (_pin_led_verte >0){
     digitalWrite(_pin_led_verte, HIGH);
+  }else{
+    Serial.print("Erreur : _pin_led_verte non assignée.");
   }
 }
 // Eteint la led verte
 void Pbduino::eteint_led_verte() const{
   if (_pin_led_verte >0){
     digitalWrite(_pin_led_verte, LOW);
+  }else{
+    Serial.print("Erreur : _pin_led_verte non assignée.");
   }
 }
 // Definit l'etat de la led rouge LOW | HIGH
 void Pbduino::set_led_rouge(uint8_t state) const{
-  if (_pin_led_rouge >0){
+  if (_pin_led_rouge > 0){
     digitalWrite(_pin_led_rouge, state);
+  } else{
+    Serial.print("Erreur : _pin_led_rouge non assignée.");
   }
 }
 // Allume la led rouge
 void Pbduino::allume_led_rouge() const{
   if (_pin_led_rouge >0){
     digitalWrite(_pin_led_rouge, HIGH);
+  } else{
+    Serial.print("Erreur : _pin_led_rouge non assignée.");
   }
 }
 // Eteint la led rouge
 void Pbduino::eteint_led_rouge() const{
   if (_pin_led_rouge >0){
     digitalWrite(_pin_led_rouge, LOW);
+  } else{
+    Serial.print("Erreur : _pin_led_rouge non assignée.");
   }
 }
 // Definit l'etat de la led jaune LOW | HIGH
 void Pbduino::set_led_jaune(uint8_t state) const{
   if (_pin_led_jaune >0){
     digitalWrite(_pin_led_jaune, state);
+  } else{
+    Serial.print("Erreur : _pin_led_jaune non assignée.");
   }
 }
 // Allume la led jaune
 void Pbduino::allume_led_jaune() const{
   if (_pin_led_jaune >0){
     digitalWrite(_pin_led_jaune, HIGH);
+  }else{
+    Serial.print("Erreur : _pin_led_jaune non assignée.");
   }
 }
 // Eteint la led jaune
 void Pbduino::eteint_led_jaune() const{
   if (_pin_led_jaune >0){
     digitalWrite(_pin_led_jaune, LOW);
+  }else{
+    Serial.print("Erreur : _pin_led_jaune non assignée.");
   }
 }
 // Definit l'etat de la led bleu LOW | HIGH
 void Pbduino::set_led_bleu(uint8_t state) const{
   if (_pin_led_bleu >0){
     digitalWrite(_pin_led_bleu, state);
+  }else{
+    Serial.print("Erreur : _pin_led_bleu non assignée.");
   }
 }
 // Allume la led bleu
 void Pbduino::allume_led_bleu() const{
   if (_pin_led_bleu >0){
     digitalWrite(_pin_led_bleu, HIGH);
+  }else{
+    Serial.print("Erreur : _pin_led_bleu non assignée.");
   }
 }
 // Eteint la led bleu
 void Pbduino::eteint_led_bleu() const{
   if (_pin_led_bleu >0){
     digitalWrite(_pin_led_bleu, LOW);
+  }else{
+    Serial.print("Erreur : _pin_led_bleu non assignée.");
   }
 }
 
@@ -143,6 +158,8 @@ void Pbduino::buzzer(unsigned int frequency){
   if (_pin_buzzer > 0){
     _tone_frequency = frequency;
     tone(_pin_buzzer, frequency);
+  }else{
+    Serial.print("Erreur : _pin_buzzer non assignée.");
   }
 }
 //  Joue un son selon une frequence pendant une durée
@@ -150,12 +167,20 @@ void Pbduino::buzzer(unsigned int frequency, unsigned long duration){
   if (_pin_buzzer > 0){
     _tone_frequency = frequency;
     tone(_pin_buzzer, frequency, duration);
+  }else{
+    Serial.print("Erreur : _pin_buzzer non assignée.");
   }
 }
 // Joue le meme son que precedement
 void Pbduino::buzzer() const{
-  if (_pin_buzzer>0 &&_tone_frequency>0){
-    tone(_pin_buzzer, _tone_frequency);
+  if (_pin_buzzer>0){
+    if (_tone_frequency>0){
+      tone(_pin_buzzer, _tone_frequency);
+    }else{
+      Serial.print("Erreur : _tone_frequency =0");
+    }
+  }else{
+    Serial.print("Erreur : _pin_buzzer non assignée.");
   }
 }
 // Un peu de silence!
@@ -163,6 +188,8 @@ void Pbduino::noBuzzer()const{
   if (_pin_buzzer > 0){
     noTone(_pin_buzzer);
   //TODO, si play, stopper
+  }else{
+    Serial.print("Erreur : _pin_buzzer non assignée.");
   }
 }
 /*
@@ -183,25 +210,22 @@ Une sous classe de Pbduino pour les modules avec afficheur LCD
 Pbduino_lcd::Pbduino_lcd(): Pbduino(), _lcd_cols(16), _lcd_rows(2){
 }
 Pbduino_lcd::~Pbduino_lcd(){
-  delete _lcd;
+  delete lcd;
 }
 void Pbduino_lcd::init(){
   Pbduino::init();
-  _lcd = new LiquidCrystal_I2C(0x20,_lcd_cols,_lcd_rows);
-  _lcd->init();
-  delay(2000);
-  _lcd->backlight();
-  delay(500);
-  _lcd->clear();
-  delay(500);
-  _lcd->setCursor(0,0);
-  _lcd->print("PIERRON - " + _name);
-  _lcd->setCursor(0,1);
+  lcd = new LiquidCrystal_I2C(0x20,_lcd_cols,_lcd_rows);
+  lcd->init();
+  lcd->backlight();
+  lcd->clear();
+  lcd->setCursor(0,0);
+  lcd->print("PIERRON - " + _name);
+  lcd->setCursor(0,1);
 }
 
-LiquidCrystal_I2C Pbduino_lcd::lcd(){
-  return *_lcd;
-}
+//LiquidCrystal_I2C* Pbduino_lcd::lcd(){
+//  return _lcd;
+//}
 
 void Pbduino_lcd::affiche(String txt){
   affiche(txt, 0,0);
@@ -213,11 +237,37 @@ void Pbduino_lcd::affiche(String txt, int row, int col){
   while (txt.length()<_lcd_cols){
     txt += " ";
   }
-  _lcd->setCursor(col, row);
-  _lcd->print(txt);
+  lcd->setCursor(col, row);
+  lcd->print(txt);
+}
+void Pbduino_lcd::affiche(int val){
+  affiche(String(val));
+}
+void Pbduino_lcd::affiche(int val, int row){
+  affiche(String(val), row);
+}
+void Pbduino_lcd::affiche(int val, int row, int col){
+  affiche(String(val), row, col);
+}
+void Pbduino_lcd::affiche(float val){
+  affiche(String(val));
+}
+void Pbduino_lcd::affiche(float val, int row){
+  affiche(String(val), row);
+}
+void Pbduino_lcd::affiche(float val, int row, int col){
+  affiche(String(val), row, col);
 }
 
-
+void Pbduino_lcd::allumeEcran(){
+  lcd->backlight();
+}
+void Pbduino_lcd::eteintEcran(){
+  lcd->noBacklight();
+}
+void Pbduino_lcd::effaceEcran(){
+  lcd->clear();
+}
 
 /*
 ********************   Classe Pb100   ********************
