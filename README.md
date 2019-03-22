@@ -23,31 +23,33 @@ Copier le dossier dans le repertoir librairies du programme arduino.
 
 ## Example
 
-  #include "pbduino.h"
-  float distance;
-  Pb100 pb100;
+#include "pbduino.h"
 
-  void setup() {
-    pb100.init();
+float distance;
+Pb100 pb100; // Déclaration de ma maquette PB100
+
+void setup() {
+  pb100.init();
+}
+
+void loop() {
+  distance = pb100.distance();
+  if (distance ==0){
+    pb100.lcd->setCursor(0,1);
+    pb100.lcd->print("Distance: ???   "); //Syntaxe qui permet d'utiliser toutes les méthodes de LiquidCristal
+  }else{
+    pb100.affiche("Distance: " + String(distance,0) + "mm ",1); //Syntaxe simplifiée
   }
-
-  void loop() {
-
-    distance = pb100.distance();
-    if (distance ==0){
-      pb100.lcd().setCursor(0,1);
-      pb100.lcd().print("Distance: ???   "); //Syntaxe qui permet d'utiliser toutes les méthodes de LiquidCristal
-    }else{
-      pb100.affiche("Distance: " + String(distance,0) + "mm ",1); //Syntaxe simplifiée
-    }
-    if (distance > 100){
-      pb100.allume_led_verte();
-      pb100.eteint_led_rouge();
-      pb100.noBuzzer();
-    }else if (distance != 0){
-      pb100.allume_led_rouge();
-      pb100.eteint_led_verte();
-      pb100.buzzer();
-    }
-      delay(500);
+  if (distance > 100){
+    pb100.allume_led_verte();
+    pb100.eteint_led_rouge();
+    pb100.noBuzzer();
+    pb100.eteintEcran();// ou pb100.lcd->noBacklight();
+  }else if (distance != 0){
+    pb100.allume_led_rouge();
+    pb100.eteint_led_verte();
+    pb100.buzzer();
+    pb100.allumeEcran();//ou pb100.lcd->backlight();
   }
+    delay(500);
+}
