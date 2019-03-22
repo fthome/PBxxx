@@ -22,7 +22,7 @@ Pour la version protype cette bibliothèque est livrée avec un fork de LiquidCr
 Copier le dossier dans le repertoir librairies du programme arduino.
 
 ## Example
-
+```C++
 #include "pbduino.h"
 
 float distance;
@@ -53,3 +53,4 @@ void loop() {
   }
     delay(500);
 }
+```
