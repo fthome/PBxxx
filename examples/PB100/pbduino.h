@@ -30,7 +30,6 @@ class Pbduino{
   Pbduino();
   ~Pbduino();
 
-  enum {VERT, ROUGE, JAUNE, BLEU};
   void set_led_verte(uint8_t state) const;
   void allume_led_verte() const;
   void eteint_led_verte() const;
@@ -43,7 +42,6 @@ class Pbduino{
   void set_led_bleu(uint8_t state) const;
   void allume_led_bleu() const;
   void eteint_led_bleu() const;
-  void set_led(uint8_t color, uint8_t state) const;
 
   void buzzer(unsigned int frequency);
   void buzzer(unsigned int frequency, unsigned long duration);

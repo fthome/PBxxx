@@ -52,11 +52,6 @@ void Pbduino::init(){
 // LES LEDS    //
 /////////////////
 
-// Definit l'état d'une led
-void set_led(uint8_t color, uint8_t state) const{
-  
-}
-
 // Definit l'etat de la led verte LOW | HIGH
 void Pbduino::set_led_verte(uint8_t state) const{
   if (_pin_led_verte >0){
