@@ -24,12 +24,12 @@ void loop() {
     pb100.allume_led_verte();
     pb100.eteint_led_rouge();
     pb100.noBuzzer();
-    pb100.eteintEcran();// ou pb100.lcd->noBacklight();
+    //pb100.eteintEcran();// ou pb100.lcd->noBacklight();
   }else if (distance != 0){
     pb100.allume_led_rouge();
     pb100.eteint_led_verte();
     pb100.buzzer();
-    pb100.allumeEcran();//ou pb100.lcd->backlight();
+    //pb100.allumeEcran();//ou pb100.lcd->backlight();
   }
     delay(500);
 }
