@@ -6,44 +6,54 @@
 // Maquette PB200 : 
 // Afficher la valeur de N et Uth d'un capteur sur un écran LCD et moniteur série.
 
-#include <LiquidCrystal.h>                
-LiquidCrystal EcranLCD(12, 11, 9, 8, 7, 6);                                        
+
+
+// Fonctionne avec PB100 car PB200 n'a pas d'afficheur LCD
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C EcranLCD(0x20,16,2);
+
+const int DEL_ROUGE = 7;
+const int DEL_VERTE = 6;
+const int BUZZER = 5;
 
 void setup() {                 
 
     pinMode(A1,INPUT);
-    pinMode(5,OUTPUT);
-    pinMode(2,OUTPUT);
-    pinMode(13,OUTPUT);
+    pinMode(DEL_ROUGE,OUTPUT);
+    pinMode(DEL_VERTE,OUTPUT);
+    pinMode(BUZZER,OUTPUT);
     
     EcranLCD.begin(16, 2);
     Serial.begin(9600); // ouvir un port série
 }
 
 void loop()  {
-
-    if(analogRead(A1) < (512)){
-        digitalWrite(5,LOW);
-        digitalWrite(2,HIGH);
-        tone(13,650,500); 
+  
+    int N = analogRead(A1); 
+    float U = N * 5.0 / 1023;
+    
+    if(N < 512){
+        digitalWrite(DEL_VERTE,LOW);
+        digitalWrite(DEL_ROUGE,HIGH);
+        tone(BUZZER,650,500); 
         delay(500);
-        digitalWrite(2,LOW);
-        tone(13,750,500); 
+        digitalWrite(DEL_ROUGE,LOW);
+        tone(BUZZER,750,500); 
         delay(500);
     }
-     else{
-        digitalWrite(5,HIGH);
-        digitalWrite(2,LOW);
-         }
-    
- int N = analogRead(A1); 
- float U = N*4.64/1023;
+    else{
+        digitalWrite(DEL_VERTE,HIGH);
+        digitalWrite(DEL_ROUGE,LOW);
+    }
 
-   Serial.print("Valeur numerique mesuree par le capteur : N = ");
-   Serial.print(N);
-   Serial.print("    Tension : U = ");
-   Serial.print(U);
-   Serial.println(" V ");
+
+    
+    Serial.print("Valeur numerique mesuree par le capteur : N = ");
+    Serial.print(N);
+    Serial.print("    Tension : U = ");
+    Serial.print(U);
+    Serial.println(" V ");
    
     EcranLCD.clear();                 
     EcranLCD.setCursor(0, 0);       
@@ -53,7 +63,7 @@ void loop()  {
     EcranLCD.print("    U = ");
     EcranLCD.print(U);  
     EcranLCD.print(" V");
-                       
+             
 }   
 
 

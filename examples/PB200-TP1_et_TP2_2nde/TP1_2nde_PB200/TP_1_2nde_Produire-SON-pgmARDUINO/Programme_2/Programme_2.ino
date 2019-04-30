@@ -5,14 +5,16 @@
 // Programme n°2 :
 // J’entends la sirène des pompiers indéfiniment !
 
+const int BUZZER = 15;
+
 void setup(){
-    pinMode(13,OUTPUT);
+    pinMode(BUZZER,OUTPUT);
 }
 
 void loop(){
-    tone(13,435); 
+    tone(BUZZER,435); 
     delay(500);
-    tone(13,488);
+    tone(BUZZER,488);
     delay(500);
 }
 

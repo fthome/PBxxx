@@ -3,22 +3,26 @@
 // Fabrication et distribution PIERRON
 
 // défi n°8 :
-// Lorsque j’appuie sur le bouton poussoir relié à la broche 10, j’entends la sirène de la Police et je vois la
+// Lorsque j’appuie sur le bouton poussoir relié à la broche 8, j’entends la sirène de la Police et je vois la
 // DEL bleue clignoter au rythme du changement de fréquence de la sirène.
 
+const int DEL_BLEU = 11;
+const int BP_BLEU = 8;
+const int BUZZER = 15;
+
 void setup(){
-    pinMode(10,INPUT);
-    pinMode(13,OUTPUT);
-    pinMode(5,OUTPUT);
+    pinMode(BP_BLEU,INPUT);
+    pinMode(DEL_BLEU,OUTPUT);
+    pinMode(BUZZER,OUTPUT);
 }
 
 void loop(){
-    if(digitalRead(10)==(1)){
-        digitalWrite(5,1);       
-        tone(13,435,500);
+    if(digitalRead(BP_BLEU) == HIGH){
+        digitalWrite(DEL_BLEU,HIGH);       
+        tone(BUZZER,435,500);
         delay(500);
-        digitalWrite(5,0);
-        tone(13,580,500);
+        digitalWrite(DEL_BLEU,LOW);
+        tone(BUZZER,580,500);
         delay(500);
     }
 }

@@ -7,67 +7,79 @@
 // Lorsque j’appuie sur le BP ROUGE, la DEL ROUGE s’allume.
 // Lorsque j’appuie sur le BP BLEU, la DEL BLEUE s’allume.
 // Lorsque j’appuie sur le BP VERT, la DEL VERTE s’allume.
-
+const int DEL_JAUNE = 13;
+const int BP_JAUNE = 6;
+const int DEL_ROUGE = 12;
+const int BP_ROUGE = 7;
+const int DEL_BLEU = 11;
+const int BP_BLEU = 8;
+const int DEL_VERT = 14;
+const int BP_VERT = 5;
 
 void setup(){
+    pinMode(BP_JAUNE,INPUT);
+    pinMode(BP_ROUGE,INPUT);
+    pinMode(BP_BLEU,INPUT);
+    pinMode(BP_VERT,INPUT);
+
+    pinMode(DEL_JAUNE,OUTPUT);
+    pinMode(DEL_ROUGE,OUTPUT);
+    pinMode(DEL_BLEU,OUTPUT);
+    pinMode(DEL_VERT,OUTPUT);
+    
+  /*
     pinMode(12,INPUT);
     pinMode(11,INPUT);
     pinMode(10,INPUT);    
     pinMode(9,INPUT);
-        pinMode(8,INPUT);
+    pinMode(8,INPUT);
     pinMode(5,OUTPUT);
     pinMode(4,OUTPUT);
     pinMode(3,OUTPUT);
     pinMode(2,OUTPUT);
-        pinMode(6,OUTPUT);
+    pinMode(6,OUTPUT);
+    */
 }
 
 void loop(){
   
-    if(digitalRead(12)==(1))
+    if(digitalRead(BP_JAUNE)==HIGH)
      {
-      digitalWrite(3,HIGH);
+      digitalWrite(DEL_JAUNE,HIGH);
      }
       else
        {
-        digitalWrite(3,LOW);
+        digitalWrite(DEL_JAUNE,LOW);
        }
        
-    if(digitalRead(11)==(1))
+    if(digitalRead(BP_ROUGE)==HIGH)
      {
-      digitalWrite(2,1);
+      digitalWrite(DEL_ROUGE,HIGH);
      }
       else
        {
-        digitalWrite(2,0);
+        digitalWrite(DEL_ROUGE,LOW);
        }
    
-    if(digitalRead(10)==(1))
+    if(digitalRead(BP_BLEU)==HIGH)
      {
-      digitalWrite(5,1);
+      digitalWrite(DEL_BLEU,HIGH);
      }
       else
        {
-        digitalWrite(5,0);
+        digitalWrite(DEL_BLEU,LOW);
        }
           
-    if(digitalRead(9)==(1))
+    if(digitalRead(BP_VERT)==HIGH)
      {
-      digitalWrite(4,1);
+      digitalWrite(DEL_VERT,HIGH);
      }
       else
        {
-        digitalWrite(4,0);
+        digitalWrite(DEL_VERT,LOW);
        }
 
-    if(digitalRead(8)==(1))
-     {
-      digitalWrite(6,1);
-     }
-      else
-       {
-        digitalWrite(6,0);
-       }
+   
 }
 
 

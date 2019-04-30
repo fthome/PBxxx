@@ -3,19 +3,22 @@
 // Fabrication et distribution PIERRON
 
 // défi n°5 :
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 9, j’entends la sirène de la Police !
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 8, j’entends la sirène de la Police !
+
+const int BP_BLEU = 8;
+const int BUZZER = 15;
 
 void setup(){
-    pinMode(9,INPUT);
-    pinMode(13,OUTPUT);
+    pinMode(BP_BLEU,INPUT);
+    pinMode(BUZZER,OUTPUT);
 }
 
 void loop(){
-    if( digitalRead(9)==(1) )
+    if( digitalRead(BP_BLEU) == HIGH )
     {
-        tone(13,435,500); 
+        tone(BUZZER,435,500); 
         delay(500);
-        tone(13,580,500); 
+        tone(BUZZER,580,500); 
         delay(500);
     }
 }

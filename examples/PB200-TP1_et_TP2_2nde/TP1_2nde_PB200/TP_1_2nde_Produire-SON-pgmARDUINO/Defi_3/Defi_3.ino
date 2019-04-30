@@ -5,15 +5,65 @@
 // défi n°3 :
 // Réalise un chenillard
 
+const int DEL_JAUNE = 13;
+const int BP_JAUNE = 6;
+const int DEL_ROUGE = 12;
+const int BP_ROUGE = 7;
+const int DEL_BLEU = 11;
+const int BP_BLEU = 8;
+const int DEL_VERT = 14;
+const int BP_VERT = 5;
+
 void setup(){
-    pinMode(9,INPUT);
-    pinMode(2,OUTPUT);
-    pinMode(3,OUTPUT);
-    pinMode(4,OUTPUT);
-    pinMode(5,OUTPUT);
+    pinMode(BP_JAUNE,INPUT);
+    pinMode(BP_ROUGE,INPUT);
+    pinMode(BP_BLEU,INPUT);
+    pinMode(BP_VERT,INPUT);
+
+    pinMode(DEL_JAUNE,OUTPUT);
+    pinMode(DEL_ROUGE,OUTPUT);
+    pinMode(DEL_BLEU,OUTPUT);
+    pinMode(DEL_VERT,OUTPUT);
 }
 
 void loop(){
+
+
+    if(digitalRead(BP_BLEU)==HIGH){
+
+        digitalWrite(DEL_ROUGE,LOW);
+        digitalWrite(DEL_BLEU,HIGH);
+        delay(100);
+
+        digitalWrite(DEL_BLEU,LOW);
+        digitalWrite(DEL_ROUGE,HIGH);
+        delay(100);
+        
+        digitalWrite(DEL_ROUGE,LOW);
+        digitalWrite(DEL_JAUNE,HIGH);
+        delay(100);
+
+        digitalWrite(DEL_JAUNE,LOW);
+        digitalWrite(DEL_VERT,HIGH);
+        delay(100);
+
+        digitalWrite(DEL_VERT,LOW);
+        digitalWrite(DEL_JAUNE,HIGH);
+        delay(100);
+
+        digitalWrite(DEL_JAUNE,LOW);
+        digitalWrite(DEL_ROUGE,HIGH);
+        delay(100);
+    }
+    else
+    {
+        digitalWrite(DEL_JAUNE,LOW);
+        digitalWrite(DEL_VERT,LOW);
+        digitalWrite(DEL_ROUGE,LOW);
+        digitalWrite(DEL_BLEU,LOW);
+    }
+        
+  /*
     if(digitalRead(9)==(1)){
         digitalWrite(2,1);
         delay(100);
@@ -37,6 +87,7 @@ void loop(){
         delay(100);
         digitalWrite(2,0);
     }
+    */
 }
 
 
