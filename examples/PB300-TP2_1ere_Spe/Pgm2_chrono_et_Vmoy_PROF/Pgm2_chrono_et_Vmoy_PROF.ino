@@ -5,9 +5,9 @@
 #include <LiquidCrystal_I2C.h>                
 LiquidCrystal_I2C EcranLCD(0x20,20,4);
 
-const int LED_ROUGE = 7; 
-const int LED_VERT = 5;
-const int BUZZER = 9;
+const int pin_led_rouge = 4; 
+const int pin_led_verte = 2;
+const int pin_buzzer = 6;
 
 const float d = 0.80;   // distance entre les deux capteurs en m
 
@@ -15,9 +15,9 @@ const float d = 0.80;   // distance entre les deux capteurs en m
 void setup(){
     pinMode(A1,INPUT);
     pinMode(A2,INPUT);
-    pinMode(LED_ROUGE,OUTPUT);
-    pinMode(LED_VERT,OUTPUT);
-    pinMode(BUZZER,OUTPUT);       
+    pinMode(pin_led_rouge,OUTPUT);
+    pinMode(pin_led_verte,OUTPUT);
+    pinMode(pin_buzzer,OUTPUT);       
     
     EcranLCD.begin(20, 4);
     EcranLCD.clear();
@@ -30,19 +30,19 @@ void setup(){
 }
 
 void loop(){
-float topDepart = 0;
+float top_depart = 0;
 float t;
 float v;
     
     if(analogRead(A1) < 950)
      {
-        topDepart = millis();                   // top chrono
-        digitalWrite(LED_VERT,0);
-        digitalWrite(LED_ROUGE,1);
-        tone(BUZZER,600,100);
+        top_depart = millis();                   // top chrono
+        digitalWrite(pin_led_verte,0);
+        digitalWrite(pin_led_rouge,1);
+        tone(pin_buzzer,600,100);
         while(analogRead(A2) > 950)       // arrêt chrono
 
-        t =(millis() - topDepart) / 1000.0;  // ainsi définie l'unité de t est la milliseconde.
+        t =(millis() - top_depart) / 1000.0;  // ainsi définie l'unité de t est la milliseconde.
         v = d / t;
 
         EcranLCD.clear();
@@ -54,7 +54,7 @@ float v;
         EcranLCD.print("* Relachez l'objet *"); 
        }
     else{
-        digitalWrite(LED_VERT,1);
-        digitalWrite(LED_ROUGE,0);
+        digitalWrite(pin_led_verte,1);
+        digitalWrite(pin_led_rouge,0);
         } 
 }

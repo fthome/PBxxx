@@ -3,27 +3,27 @@
 // Fabrication et distribution PIERRON
 
 // défi n°1 :
-// Lorsque j’appuie sur le bouton poussoir (BP) jaune relié à la broche 6 de la carte ArduinoTM , la DEL jaune reliée à la boche 13 s’allume. 
-// Lorsque je n’appuie plus sur le BP, la DEL s’éteint.
+// Lorsque j’appuie sur le bouton poussoir (BP) jaune relié à la broche 3 de la carte ArduinoTM , la led jaune reliée à la boche 10 s’allume. 
+// Lorsque je n’appuie plus sur le BP, la led s’éteint.
 
-const int DEL_JAUNE = 13;
-const int BP_JAUNE = 6;
+const int pin_led_jaune = 10;
+const int pin_bp_jaune = 3;
 
 
 void setup(){
-    pinMode(BP_JAUNE,INPUT);
-    pinMode(DEL_JAUNE,OUTPUT);
+    pinMode(pin_bp_jaune,INPUT);
+    pinMode(pin_led_jaune,OUTPUT);
 }
 
 void loop(){
-    if(digitalRead(BP_JAUNE)==HIGH)
-     {
-      digitalWrite(DEL_JAUNE,HIGH);
-     }
-      else
-       {
-        digitalWrite(DEL_JAUNE,LOW);
-       }
+    if(digitalRead(pin_bp_jaune)==HIGH)
+    {
+        digitalWrite(pin_led_jaune,HIGH);
+    }
+    else
+    {
+        digitalWrite(pin_led_jaune,LOW);
+    }
 }
 
 

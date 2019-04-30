@@ -5,14 +5,14 @@
 // Programme n°1 :
 // J’entends un son de 440 Hz après avoir téléversé le programme.
 
-const int BUZZER = 15;
+const int pin_buzzer = 12;
 
 void setup(){
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_buzzer,OUTPUT);
 }
 
 void loop(){
-    tone(BUZZER,440); 
+    tone(pin_buzzer,440); 
 }
 
 

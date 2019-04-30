@@ -13,16 +13,16 @@
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C EcranLCD(0x20,16,2);
 
-const int DEL_ROUGE = 7;
-const int DEL_VERTE = 6;
-const int BUZZER = 5;
+const int pin_led_verte = 3;
+const int pin_led_rouge = 4;
+const int pin_buzzer = 2;
 
 void setup() {                 
 
     pinMode(A1,INPUT);
-    pinMode(DEL_ROUGE,OUTPUT);
-    pinMode(DEL_VERTE,OUTPUT);
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_led_rouge,OUTPUT);
+    pinMode(pin_led_verte,OUTPUT);
+    pinMode(pin_buzzer,OUTPUT);
     
     EcranLCD.begin(16, 2);
     Serial.begin(9600); // ouvir un port série
@@ -34,17 +34,17 @@ void loop()  {
     float U = N * 5.0 / 1023;
     
     if(N < 512){
-        digitalWrite(DEL_VERTE,LOW);
-        digitalWrite(DEL_ROUGE,HIGH);
-        tone(BUZZER,650,500); 
+        digitalWrite(pin_led_verte,LOW);
+        digitalWrite(pin_led_rouge,HIGH);
+        tone(pin_buzzer,650,500); 
         delay(500);
-        digitalWrite(DEL_ROUGE,LOW);
-        tone(BUZZER,750,500); 
+        digitalWrite(pin_led_rouge,LOW);
+        tone(pin_buzzer,750,500); 
         delay(500);
     }
     else{
-        digitalWrite(DEL_VERTE,HIGH);
-        digitalWrite(DEL_ROUGE,LOW);
+        digitalWrite(pin_led_verte,HIGH);
+        digitalWrite(pin_led_rouge,LOW);
     }
 
 

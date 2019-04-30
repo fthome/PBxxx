@@ -4,9 +4,9 @@
 #include <LiquidCrystal_I2C.h>                
 LiquidCrystal_I2C EcranLCD(0x20,20,4);
 
-const int LED_ROUGE = 7; 
-const int LED_VERT = 5;
-const int BUZZER = 9;
+const int pin_led_rouge = 4; 
+const int pin_led_verte = 2;
+const int pin_buzzer = 6;
 
 const float L = 0.07 ;  // L = Longueur de la voiture en m
 
@@ -15,9 +15,9 @@ const float L = 0.07 ;  // L = Longueur de la voiture en m
 void setup(){
     pinMode(A1,INPUT);
     pinMode(A2,INPUT);
-    pinMode(LED_ROUGE,OUTPUT);
-    pinMode(LED_VERT,OUTPUT);
-    pinMode(BUZZER,OUTPUT); 
+    pinMode(pin_led_rouge,OUTPUT);
+    pinMode(pin_led_verte,OUTPUT);
+    pinMode(pin_buzzer,OUTPUT); 
     
     EcranLCD.begin(20, 4);
     EcranLCD.clear();
@@ -32,23 +32,23 @@ void setup(){
    }
 
 void loop(){
-  float topDepart1 = 0;
+  float top_depart_1 = 0;
   float t1;
   float v1;
 
 
-  float topDepart2 = 0;
+  float top_depart_2 = 0;
   float t2;
   float v2;
 
   if(analogRead(A1) < 950){
-        topDepart1 = millis();
-        digitalWrite(LED_VERT,0);
-        digitalWrite(LED_ROUGE,1);
-        tone(BUZZER,600,100);
+        top_depart_1 = millis();
+        digitalWrite(pin_led_verte,0);
+        digitalWrite(pin_led_rouge,1);
+        tone(pin_buzzer,600,100);
         while(analogRead(A1) < 950)
 
-        t1 = (millis() - topDepart1) /1000.0;
+        t1 = (millis() - top_depart_1) /1000.0;
         v1 = L/t1;
           
         EcranLCD.clear();
@@ -58,17 +58,17 @@ void loop(){
    }
    
    else{
-        digitalWrite(LED_VERT,1);
-        digitalWrite(LED_ROUGE,0);
+        digitalWrite(pin_led_verte,1);
+        digitalWrite(pin_led_rouge,0);
 
         if(analogRead(A2) < 950){
-            topDepart2 = millis();
-            digitalWrite(LED_VERT,0);
-            digitalWrite(LED_ROUGE,1);
-            tone(BUZZER,600,100);
+            top_depart_2 = millis();
+            digitalWrite(pin_led_verte,0);
+            digitalWrite(pin_led_rouge,1);
+            tone(pin_buzzer,600,100);
             while(analogRead(A2) < 950)
 
-            t2 = (millis() - topDepart2) /1000.0;
+            t2 = (millis() - top_depart_2) /1000.0;
             v2 = L/t2;
 
             EcranLCD.setCursor(0, 1);

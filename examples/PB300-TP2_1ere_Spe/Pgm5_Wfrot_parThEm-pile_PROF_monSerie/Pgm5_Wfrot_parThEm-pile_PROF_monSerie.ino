@@ -13,9 +13,9 @@
 #include <LiquidCrystal_I2C.h>                
 LiquidCrystal_I2C EcranLCD(0x20,20,4);
 
-const int LED_ROUGE = 7; 
-const int LED_VERT = 5;
-const int BUZZER = 9;
+const int LED_ROUGE = 4; 
+const int LED_VERT = 2;
+const int BUZZER = 6;
 
 const float m = 0.048 ;  // masse de l'ojet en kg (ici objet = pile 9V)
 const float L = 0.048 ;  // Longueur de l'objet en m (ici objet = pile 9V)

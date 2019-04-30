@@ -3,20 +3,20 @@
 // Fabrication et distribution PIERRON
 
 // défi n°4 :
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 8, un son de 440 Hz est émis par le buzzer relié à la broche 15.
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 5, un son de 440 Hz est émis par le buzzer relié à la broche 12.
 
-const int BP_BLEU = 8;
-const int BUZZER = 15;
+const int pin_bp_bleu = 5;
+const int pin_buzzer = 12;
 
 void setup(){
-    pinMode(BP_BLEU,INPUT);
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_bp_bleu,INPUT);
+    pinMode(pin_buzzer,OUTPUT);
 }
 
 void loop(){
-    if( digitalRead(BP_BLEU) == HIGH )
+    if( digitalRead(pin_bp_bleu) == HIGH )
     {
-        tone(BUZZER,440,500);    // durée du son 500 ms
+        tone(pin_buzzer,440,500);    // durée du son 500 ms
     }
 }
 

@@ -3,83 +3,68 @@
 // Fabrication et distribution PIERRON
 
 // défi n°2 :
-// Lorsque j’appuie sur le BP JAUNE, la DEL JAUNE s’allume.
-// Lorsque j’appuie sur le BP ROUGE, la DEL ROUGE s’allume.
-// Lorsque j’appuie sur le BP BLEU, la DEL BLEUE s’allume.
-// Lorsque j’appuie sur le BP VERT, la DEL VERTE s’allume.
-const int DEL_JAUNE = 13;
-const int BP_JAUNE = 6;
-const int DEL_ROUGE = 12;
-const int BP_ROUGE = 7;
-const int DEL_BLEU = 11;
-const int BP_BLEU = 8;
-const int DEL_VERT = 14;
-const int BP_VERT = 5;
+// Lorsque j’appuie sur le BP JAUNE, la led JAUNE s’allume.
+// Lorsque j’appuie sur le BP ROUGE, la led ROUGE s’allume.
+// Lorsque j’appuie sur le BP BLEU, la led BLEUE s’allume.
+// Lorsque j’appuie sur le BP VERT, la led VERTE s’allume.
+
+const int pin_led_jaune = 10;
+const int pin_bp_jaune = 3;
+const int pin_led_rouge = 9;
+const int pin_bp_rouge = 4;
+const int pin_led_bleue = 8;
+const int pin_bp_bleu = 5;
+const int pin_led_verte = 11;
+const int pin_bp_vert = 2;
 
 void setup(){
-    pinMode(BP_JAUNE,INPUT);
-    pinMode(BP_ROUGE,INPUT);
-    pinMode(BP_BLEU,INPUT);
-    pinMode(BP_VERT,INPUT);
+    pinMode(pin_bp_jaune,INPUT);
+    pinMode(pin_bp_rouge,INPUT);
+    pinMode(pin_bp_bleu,INPUT);
+    pinMode(pin_bp_vert,INPUT);
 
-    pinMode(DEL_JAUNE,OUTPUT);
-    pinMode(DEL_ROUGE,OUTPUT);
-    pinMode(DEL_BLEU,OUTPUT);
-    pinMode(DEL_VERT,OUTPUT);
-    
-  /*
-    pinMode(12,INPUT);
-    pinMode(11,INPUT);
-    pinMode(10,INPUT);    
-    pinMode(9,INPUT);
-    pinMode(8,INPUT);
-    pinMode(5,OUTPUT);
-    pinMode(4,OUTPUT);
-    pinMode(3,OUTPUT);
-    pinMode(2,OUTPUT);
-    pinMode(6,OUTPUT);
-    */
+    pinMode(pin_led_jaune,OUTPUT);
+    pinMode(pin_led_rouge,OUTPUT);
+    pinMode(pin_led_bleue,OUTPUT);
+    pinMode(pin_led_verte,OUTPUT);
 }
 
 void loop(){
-  
-    if(digitalRead(BP_JAUNE)==HIGH)
+     if(digitalRead(pin_bp_jaune)==HIGH)
      {
-      digitalWrite(DEL_JAUNE,HIGH);
+        digitalWrite(pin_led_jaune,HIGH);
      }
-      else
-       {
-        digitalWrite(DEL_JAUNE,LOW);
-       }
+     else
+     {
+        digitalWrite(pin_led_jaune,LOW);
+     }
        
-    if(digitalRead(BP_ROUGE)==HIGH)
-     {
-      digitalWrite(DEL_ROUGE,HIGH);
-     }
-      else
-       {
-        digitalWrite(DEL_ROUGE,LOW);
-       }
+    if(digitalRead(pin_bp_rouge)==HIGH)
+    {
+        digitalWrite(pin_led_rouge,HIGH);
+    }
+    else
+    {
+        digitalWrite(pin_led_rouge,LOW);
+    }
    
-    if(digitalRead(BP_BLEU)==HIGH)
-     {
-      digitalWrite(DEL_BLEU,HIGH);
-     }
-      else
-       {
-        digitalWrite(DEL_BLEU,LOW);
-       }
+    if(digitalRead(pin_bp_bleu)==HIGH)
+    {
+        digitalWrite(pin_led_bleue,HIGH);
+    }
+    else
+    {
+        digitalWrite(pin_led_bleue,LOW);
+    }
           
-    if(digitalRead(BP_VERT)==HIGH)
-     {
-      digitalWrite(DEL_VERT,HIGH);
-     }
-      else
-       {
-        digitalWrite(DEL_VERT,LOW);
-       }
-
-   
+    if(digitalRead(pin_bp_vert)==HIGH)
+    {
+        digitalWrite(pin_led_verte,HIGH);
+    }
+    else
+    {
+        digitalWrite(pin_led_verte,LOW);
+    }
 }
 
 

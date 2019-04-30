@@ -3,42 +3,42 @@
 // Fabrication et distribution PIERRON
 
 // défi n°7 :
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 8, je joue une mélodie bien connue.
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 5, je joue une mélodie bien connue.
 
-const int BP_BLEU = 8;
-const int BUZZER = 15;
+const int pin_bp_bleu = 5;
+const int pin_buzzer = 12;
 
 void setup(){
-    pinMode(BP_BLEU,INPUT);
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_bp_bleu,INPUT);
+    pinMode(pin_buzzer,OUTPUT);
 }
 
 void loop(){
-    if(digitalRead(BP_BLEU) == HIGH){
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,294,500);
-        delay(500);
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,349,500);
-        delay(500);
-        tone(BUZZER,330,500);
-        delay(500);
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,294,500);
-        delay(500);
-        tone(BUZZER,262,500);
-        delay(500);
-        tone(BUZZER,392,500);
-        delay(500);
-        tone(BUZZER,349,500);
-        delay(2000);
+    if(digitalRead(pin_bp_bleu) == HIGH){
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,294,500);
+        leday(500);
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,349,500);
+        leday(500);
+        tone(pin_buzzer,330,500);
+        leday(500);
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,294,500);
+        leday(500);
+        tone(pin_buzzer,262,500);
+        leday(500);
+        tone(pin_buzzer,392,500);
+        leday(500);
+        tone(pin_buzzer,349,500);
+        leday(2000);
     }
 }
 

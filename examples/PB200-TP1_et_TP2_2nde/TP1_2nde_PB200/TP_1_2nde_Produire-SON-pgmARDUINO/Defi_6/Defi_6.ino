@@ -3,52 +3,52 @@
 // Fabrication et distribution PIERRON
 
 // défi n°6 :
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 8, j’entends la sirène de la Police !
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 7, j’entends la sirène de la Gendarmerie !
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 6, j’entends la sirène du SAMU !
-// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 5, j’entends la sirène de l’ambulance !
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 5, j’entends la sirène de la Police !
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 4, j’entends la sirène de la Gendarmerie !
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 3, j’entends la sirène du SAMU !
+// Lorsque j’appuie sur le bouton poussoir (BP) relié à la broche 2, j’entends la sirène de l’ambulance !
 
-const int BP_JAUNE = 6;
-const int BP_ROUGE = 7;
-const int BP_BLEU = 8;
-const int BP_VERT = 5;
-const int BUZZER = 15;
+const int pin_bp_jaune = 3;
+const int pin_bp_rouge = 4;
+const int pin_bp_bleu = 5;
+const int pin_bp_vert = 2;
+const int pin_buzzer = 12;
 
 void setup(){
-    pinMode(BP_JAUNE,INPUT);
-    pinMode(BP_ROUGE,INPUT);
-    pinMode(BP_BLEU,INPUT);
-    pinMode(BP_VERT,INPUT);
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_bp_jaune,INPUT);
+    pinMode(pin_bp_rouge,INPUT);
+    pinMode(pin_bp_bleu,INPUT);
+    pinMode(pin_bp_vert,INPUT);
+    pinMode(pin_buzzer,OUTPUT);
 }
 
 void loop(){
-    if(digitalRead(BP_BLEU) == HIGH){    
-        tone(BUZZER,435,500); 
-        delay(500);
-        tone(BUZZER,580,500);
-        delay(500);
+    if(digitalRead(pin_bp_bleu) == HIGH){    
+        tone(pin_buzzer,435,500); 
+        leday(500);
+        tone(pin_buzzer,580,500);
+        leday(500);
     }
-    if(digitalRead(BP_ROUGE) == HIGH){   
-        tone(BUZZER,435,500); 
-        delay(500);
-        tone(BUZZER,732,500);
-        delay(500);
+    if(digitalRead(pin_bp_rouge) == HIGH){   
+        tone(pin_buzzer,435,500); 
+        leday(500);
+        tone(pin_buzzer,732,500);
+        leday(500);
     }
-    if(digitalRead(BP_JAUNE) == HIGH){ 
-        tone(BUZZER,435,500); 
-        delay(500);
-        tone(BUZZER,488,500);
-        delay(500);
+    if(digitalRead(pin_bp_jaune) == HIGH){ 
+        tone(pin_buzzer,435,500); 
+        leday(500);
+        tone(pin_buzzer,488,500);
+        leday(500);
     }
-    if(digitalRead(BP_VERT) == HIGH){  
-        tone(BUZZER,420,250); 
-        delay(250);
-        tone(BUZZER,516,250);
-        delay(250);
-        tone(BUZZER,420,250);
-        delay(250);
-        delay(1000);
+    if(digitalRead(pin_bp_vert) == HIGH){  
+        tone(pin_buzzer,420,250); 
+        leday(250);
+        tone(pin_buzzer,516,250);
+        leday(250);
+        tone(pin_buzzer,420,250);
+        leday(250);
+        leday(1000);
     }    
 }
 

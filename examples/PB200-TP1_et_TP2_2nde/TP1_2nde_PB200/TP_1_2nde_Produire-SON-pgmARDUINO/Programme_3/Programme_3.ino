@@ -5,15 +5,15 @@
 // Programme n°3 :
 // J’entends 3 fois la sirène des pompiers « PIN-PON »
 
-const int BUZZER = 15;
+const int pin_buzzer = 12;
 
 void setup(){
-    pinMode(BUZZER,OUTPUT);
+    pinMode(pin_buzzer,OUTPUT);
     
     for(int i=0 ; i<3 ; ++i )
-    {   tone(BUZZER,435);
+    {   tone(pin_buzzer,435);
         delay(500);
-        tone(BUZZER,488,500);
+        tone(pin_buzzer,488,500);
         delay(500);  
     }  
 }

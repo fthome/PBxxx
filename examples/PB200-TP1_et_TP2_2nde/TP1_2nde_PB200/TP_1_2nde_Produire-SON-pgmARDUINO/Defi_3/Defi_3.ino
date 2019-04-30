@@ -5,89 +5,62 @@
 // défi n°3 :
 // Réalise un chenillard
 
-const int DEL_JAUNE = 13;
-const int BP_JAUNE = 6;
-const int DEL_ROUGE = 12;
-const int BP_ROUGE = 7;
-const int DEL_BLEU = 11;
-const int BP_BLEU = 8;
-const int DEL_VERT = 14;
-const int BP_VERT = 5;
+const int pin_led_jaune = 10;
+const int pin_bp_jaune = 3;
+const int pin_led_rouge = 9;
+const int pin_bp_rouge = 4;
+const int pin_led_bleue = 8;
+const int pin_bp_bleu = 5;
+const int pin_led_verte = 11;
+const int pin_bp_vert = 2;
 
 void setup(){
-    pinMode(BP_JAUNE,INPUT);
-    pinMode(BP_ROUGE,INPUT);
-    pinMode(BP_BLEU,INPUT);
-    pinMode(BP_VERT,INPUT);
+    pinMode(pin_bp_jaune,INPUT);
+    pinMode(pin_bp_rouge,INPUT);
+    pinMode(pin_bp_bleu,INPUT);
+    pinMode(pin_bp_vert,INPUT);
 
-    pinMode(DEL_JAUNE,OUTPUT);
-    pinMode(DEL_ROUGE,OUTPUT);
-    pinMode(DEL_BLEU,OUTPUT);
-    pinMode(DEL_VERT,OUTPUT);
+    pinMode(pin_led_jaune,OUTPUT);
+    pinMode(pin_led_rouge,OUTPUT);
+    pinMode(pin_led_bleue,OUTPUT);
+    pinMode(pin_led_verte,OUTPUT); 
 }
 
+
 void loop(){
+    if(digitalRead(pin_bp_bleu)==HIGH){
 
+        digitalWrite(pin_led_rouge,LOW);
+        digitalWrite(pin_led_bleue,HIGH);
+        leday(100);
 
-    if(digitalRead(BP_BLEU)==HIGH){
-
-        digitalWrite(DEL_ROUGE,LOW);
-        digitalWrite(DEL_BLEU,HIGH);
-        delay(100);
-
-        digitalWrite(DEL_BLEU,LOW);
-        digitalWrite(DEL_ROUGE,HIGH);
-        delay(100);
+        digitalWrite(pin_led_bleue,LOW);
+        digitalWrite(pin_led_rouge,HIGH);
+        leday(100);
         
-        digitalWrite(DEL_ROUGE,LOW);
-        digitalWrite(DEL_JAUNE,HIGH);
-        delay(100);
+        digitalWrite(pin_led_rouge,LOW);
+        digitalWrite(pin_led_jaune,HIGH);
+        leday(100);
 
-        digitalWrite(DEL_JAUNE,LOW);
-        digitalWrite(DEL_VERT,HIGH);
-        delay(100);
+        digitalWrite(pin_led_jaune,LOW);
+        digitalWrite(pin_led_verte,HIGH);
+        leday(100);
 
-        digitalWrite(DEL_VERT,LOW);
-        digitalWrite(DEL_JAUNE,HIGH);
-        delay(100);
+        digitalWrite(pin_led_verte,LOW);
+        digitalWrite(pin_led_jaune,HIGH);
+        leday(100);
 
-        digitalWrite(DEL_JAUNE,LOW);
-        digitalWrite(DEL_ROUGE,HIGH);
-        delay(100);
+        digitalWrite(pin_led_jaune,LOW);
+        digitalWrite(pin_led_rouge,HIGH);
+        leday(100);
     }
     else
     {
-        digitalWrite(DEL_JAUNE,LOW);
-        digitalWrite(DEL_VERT,LOW);
-        digitalWrite(DEL_ROUGE,LOW);
-        digitalWrite(DEL_BLEU,LOW);
+        digitalWrite(pin_led_jaune,LOW);
+        digitalWrite(pin_led_verte,LOW);
+        digitalWrite(pin_led_rouge,LOW);
+        digitalWrite(pin_led_bleue,LOW);
     }
-        
-  /*
-    if(digitalRead(9)==(1)){
-        digitalWrite(2,1);
-        delay(100);
-        digitalWrite(2,0);
-        digitalWrite(3,1);
-        delay(100);
-        digitalWrite(3,0);
-        digitalWrite(4,1);
-        delay(100);
-        digitalWrite(4,0);
-        digitalWrite(5,1);
-        delay(100);
-        digitalWrite(5,0);
-        digitalWrite(4,1);
-        delay(100);
-        digitalWrite(4,0);
-        digitalWrite(3,1);
-        delay(100);
-        digitalWrite(3,0);
-        digitalWrite(2,1);
-        delay(100);
-        digitalWrite(2,0);
-    }
-    */
 }
 
 
